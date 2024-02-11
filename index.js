@@ -5,18 +5,18 @@ const xml2js = require('xml2js');
 
 const outputFile = 'urls.txt';
 
-// const sitemapUrls = fs.readFileSync('sitemaps.txt', 'utf-8').split('\n');
+const sitemapUrls = fs.readFileSync('sitemaps.txt', 'utf-8').split('\n');
 
-const sitemapUrls = [
-    'https://example.com/sitemap.xml',
-    'https://example.com/fr/sitemap.xml',
-    'https://example.com/de/sitemap.xml'
-];
+// const sitemapUrls = [
+//     'https://example.com/sitemap.xml',
+//     'https://example.com/fr/sitemap.xml',
+//     'https://example.com/de/sitemap.xml'
+// ];
 
 function processSitemap(sitemapUrl) {
     https.get(sitemapUrl, (res) => {
         if (res.statusCode !== 200) {
-            console.error(`Failed to fetch sitemap (${res.statusCode}): ${res.statusMessage}`);
+            console.error(`Failed to fetch sitemap from ${sitemapUrl} - (${res.statusCode}): ${res.statusMessage}`);
             return;
         }
 
